@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wallet_labels",
+  "info": {
+    "singularName": "wallet-label",
+    "pluralName": "wallet-labels",
+    "displayName": "wallet-label"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "accountLabel": {
+      "type": "string"
+    },
+    "routingLabel": {
+      "type": "string"
+    },
+    "nicknameLabel": {
+      "type": "string"
+    },
+    "submitButton": {
+      "type": "string"
+    }
+  }
+}
