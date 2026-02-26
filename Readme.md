@@ -1,8 +1,71 @@
 # Wallet POC
 
+## Quick Start for local development
+
+Use this order when running locally:
+
+1. `backend` (API) on port `5000`
+2. `strapi-cms` (content) on port `1337`
+3. `frontend` = `payment` app on port `3000` (Mimicks Subdomain app)
+4. `sa-frontend` = `sa` app on port `3001` (Mimicks Primary domain app)
+
+### One-time setup (each folder)
+
+Run `npm install` in each folder:
+
+- `backend`
+- `strapi-cms`
+- `frontend`
+- `sa-frontend`
+
+### Start commands (use 4 terminals)
+
+Terminal 1:
+
+```bash
+cd backend
+npm start
+```
+
+Terminal 2:
+
+```bash
+cd strapi-cms
+npm run develop
+```
+
+Terminal 3 (payment app must be `3000`):
+
+```bash
+cd frontend
+npm run dev -- -p 3000
+```
+
+Terminal 4 (sa app must be `3001`):
+
+```bash
+cd sa-frontend
+npm run dev -- -p 3001
+```
+
+### Home page endpoints
+
+- `sa` app home: `http://sa.lvh.me:3001`
+- `payment` app home: `http://payment.lvh.me:3000`
+- backend API base: `http://localhost:5000`
+- strapi admin: `http://localhost:1337/admin`
+
+> `sa.lvh.me` and `payment.lvh.me` are local subdomain-style hosts mapped to your machine (localhost).
+
+---
+
+---
+
+---
+
 ## Frontend
 
-Tech Stack: React, NextJS, Tailwind CSS
+Tech Stack: React, NextJS, Tailwind CSS, Auth0
 
 ---
 
@@ -124,7 +187,7 @@ Tech Stack: Strapi (NodeJS), SQLite(internal)
 
 ---
 
-## Success Page CMS
+## Error Page CMS
 
 **cURL**: curl --location 'http://localhost:1337/api/error-pages'
 
