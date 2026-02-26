@@ -46,7 +46,7 @@ export default async function Home() {
                 Log Out
               </a>
               <a
-                href="http://sa.lvh.me:3000/wallet"
+                href="http://payment.lvh.me:3000/wallet"
                 className="inline-flex rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
               >
                 Go to Wallet (Existing Frontend)
