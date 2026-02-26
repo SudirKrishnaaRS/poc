@@ -14,6 +14,9 @@
     "title": {
       "type": "string"
     },
+    "body": {
+      "type": "text"
+    },
     "accountLabel": {
       "type": "string"
     },
@@ -23,8 +26,20 @@
     "nicknameLabel": {
       "type": "string"
     },
+    "accountTypeLabel": {
+      "type": "string"
+    },
     "submitButton": {
       "type": "string"
+    },
+    "accountType": {
+      "type": "json"
+    },
+    "termsAndConditionsCheckbox": {
+      "type": "boolean"
+    },
+    "termsAndConditionsModal": {
+      "type": "json"
     }
   }
 }

@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "error_pages",
+  "info": {
+    "singularName": "error-page",
+    "pluralName": "error-pages",
+    "displayName": "error-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "buttonLabel": {
+      "type": "string"
+    }
+  }
+}

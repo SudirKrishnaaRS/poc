@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "success_pages",
+  "info": {
+    "singularName": "success-page",
+    "pluralName": "success-pages",
+    "displayName": "success-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "nicknameLabel": {
+      "type": "string"
+    },
+    "accountLabel": {
+      "type": "string"
+    }
+  }
+}

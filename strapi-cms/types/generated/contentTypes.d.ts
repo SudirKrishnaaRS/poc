@@ -430,6 +430,95 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiErrorPageErrorPage extends Struct.CollectionTypeSchema {
+  collectionName: 'error_pages';
+  info: {
+    displayName: 'error-page';
+    pluralName: 'error-pages';
+    singularName: 'error-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    body: Schema.Attribute.String;
+    buttonLabel: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::error-page.error-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHomepageHomepage extends Struct.CollectionTypeSchema {
+  collectionName: 'homepages';
+  info: {
+    displayName: 'homepage';
+    pluralName: 'homepages';
+    singularName: 'homepage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    body: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::homepage.homepage'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSuccessPageSuccessPage extends Struct.CollectionTypeSchema {
+  collectionName: 'success_pages';
+  info: {
+    displayName: 'success-page';
+    pluralName: 'success-pages';
+    singularName: 'success-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accountLabel: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::success-page.success-page'
+    > &
+      Schema.Attribute.Private;
+    nicknameLabel: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiWalletLabelWalletLabel extends Struct.CollectionTypeSchema {
   collectionName: 'wallet_labels';
   info: {
@@ -442,6 +531,9 @@ export interface ApiWalletLabelWalletLabel extends Struct.CollectionTypeSchema {
   };
   attributes: {
     accountLabel: Schema.Attribute.String;
+    accountType: Schema.Attribute.JSON;
+    accountTypeLabel: Schema.Attribute.String;
+    body: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -455,6 +547,8 @@ export interface ApiWalletLabelWalletLabel extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     routingLabel: Schema.Attribute.String;
     submitButton: Schema.Attribute.String;
+    termsAndConditionsCheckbox: Schema.Attribute.Boolean;
+    termsAndConditionsModal: Schema.Attribute.JSON;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -973,6 +1067,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::error-page.error-page': ApiErrorPageErrorPage;
+      'api::homepage.homepage': ApiHomepageHomepage;
+      'api::success-page.success-page': ApiSuccessPageSuccessPage;
       'api::wallet-label.wallet-label': ApiWalletLabelWalletLabel;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
