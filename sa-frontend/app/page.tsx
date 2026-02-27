@@ -31,16 +31,16 @@ export default async function Home() {
                 Logged in user
               </p>
               <p className="mt-1 text-sm text-slate-700">
-                {user.name || "User"}
+                Name: {user.name || "User"}
               </p>
               <p className="text-sm text-slate-500">
-                {user.email || "No email available"}
+                Email: {user.email || "No email available"}
               </p>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-3">
               <a
-                href="/auth/logout"
+                href="/logout-all"
                 className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
               >
                 Log Out
@@ -58,5 +58,3 @@ export default async function Home() {
     </div>
   );
 }
-
-// Now explain me what you did step by step like a documentation so that I can add it to readme and
