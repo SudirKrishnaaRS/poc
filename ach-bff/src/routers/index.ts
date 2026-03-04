@@ -1,5 +1,6 @@
 import { router } from '../trpc';
 import { healthRouter } from './health';
+import { achRouter } from './ach';
 
 // appRouter is the main router for our application. 
 // In a production app, we merge all sub-routers (health, users, auth, etc.) here.
@@ -8,6 +9,11 @@ export const appRouter = router({
   // Endpoint(trpc): /trpc/health.healthCheck
   // JSON Endpoint: /api/health
   health: healthRouter,
+
+  // -- ACH Form endpoint --
+  // Endpoint(trpc): /trpc/ach.submitForm
+  // JSON Endpoint: POST /api/ach-form-submit
+  ach: achRouter,
 });
 
 // We export the TypeScript type of our router.
