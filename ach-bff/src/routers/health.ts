@@ -2,6 +2,8 @@ import { z } from 'zod';
 import { router, publicProcedure } from '../trpc';
 
 // We isolate the health-related routes into their own module/router.
+// Endpoint(trpc): /trpc/health.healthCheck
+// JSON Endpoint: /api/health
 export const healthRouter = router({
   // We define a new trpc endpoint /healthCheck
   healthCheck: publicProcedure

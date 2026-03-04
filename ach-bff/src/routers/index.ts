@@ -4,6 +4,9 @@ import { healthRouter } from './health';
 // appRouter is the main router for our application. 
 // In a production app, we merge all sub-routers (health, users, auth, etc.) here.
 export const appRouter = router({
+  // -- Health Check endpoint --
+  // Endpoint(trpc): /trpc/health.healthCheck
+  // JSON Endpoint: /api/health
   health: healthRouter,
 });
 
