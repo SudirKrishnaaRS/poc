@@ -3,7 +3,7 @@ import cors from '@fastify/cors';
 import swagger from '@fastify/swagger';
 import swaggerUI from '@fastify/swagger-ui';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
-import { fastifyTRPCOpenApiPlugin } from 'trpc-openapi';
+import { fastifyTRPCOpenApiPlugin, generateOpenApiDocument } from 'trpc-openapi';
 import { appRouter } from './routers';
 import { createContext } from './context';
 
@@ -14,17 +14,21 @@ export async function buildApp() {
   // Enable CORS
   await app.register(cors);
 
+  // Generate OpenAPI spec directly from our tRPC router definitions
+  const openApiDocument = generateOpenApiDocument(appRouter, {
+    title: 'ACH BFF API',
+    description: 'Auto-generated OpenAPI docs from tRPC routers',
+    version: '1.0.0',
+    baseUrl: 'http://localhost:3005/api',
+  });
+
   // --- 1. Setup Swagger Documentation ---
   // Swagger generates an interactive visual web page representing our API.
-  // We feed it standard OpenAPI configurations (title, version, etc.)
+  // We feed it the statically generated OpenAPI document from above.
   await app.register(swagger, {
-    openapi: {
-      info: {
-        title: 'ACH BFF API',
-        description: 'Auto-generated OpenAPI docs from tRPC routers',
-        version: '1.0.0',
-      },
-      servers: [{ url: 'http://localhost:3005' }],
+    mode: 'static',
+    specification: {
+      document: openApiDocument,
     },
   });
 
