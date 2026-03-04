@@ -4,8 +4,8 @@ import swagger from '@fastify/swagger';
 import swaggerUI from '@fastify/swagger-ui';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import { fastifyTRPCOpenApiPlugin } from 'trpc-openapi';
-import { appRouter } from './router';
-import { Context } from './trpc';
+import { appRouter } from './routers';
+import { createContext } from './context';
 
 export async function buildApp() {
   // Initialize Fastify
@@ -44,7 +44,7 @@ export async function buildApp() {
   await app.register(fastifyTRPCOpenApiPlugin, {
     basePath: '/api', // All REST endpoints will be prefixed with /api
     router: appRouter,
-    createContext: ({ req, res }: { req: any; res: any }): Context => ({ req, res }),
+    createContext,
   });
 
   // --- 3. Mount pure tRPC API endpoints ---
@@ -55,7 +55,7 @@ export async function buildApp() {
     prefix: '/trpc', // All pure tRPC endpoints will be prefixed with /trpc
     trpcOptions: { 
       router: appRouter, 
-      createContext: ({ req, res }: { req: any; res: any }): Context => ({ req, res }) 
+      createContext,
     },
   });
 

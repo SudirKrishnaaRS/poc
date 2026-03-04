@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { router, publicProcedure } from './trpc';
+import { router, publicProcedure } from '../trpc';
 
-// appRouter is the main router for our application. All API endpoints are defined inside here.
-export const appRouter = router({
+// We isolate the health-related routes into their own module/router.
+export const healthRouter = router({
   // We define a new trpc endpoint /healthCheck
   healthCheck: publicProcedure
     // The .meta() block is for OpenAPI. It tells the system how to expose this tRPC
@@ -29,9 +29,3 @@ export const appRouter = router({
       return { status: 'ok' };
     }),
 });
-
-// We export the TypeScript type of our router.
-// A frontend app can import just this Type to know EXACTLY
-// what endpoints exist, what inputs they require, and what outputs they return,
-// enabling full end-to-end type safety directly from the Backend to Frontend!
-export type AppRouter = typeof appRouter;

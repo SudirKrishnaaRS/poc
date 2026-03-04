@@ -1,13 +1,6 @@
 import { initTRPC } from '@trpc/server';
 import { OpenApiMeta } from 'trpc-openapi';
-import { FastifyRequest, FastifyReply } from 'fastify';
-
-// Context is used to share data (like request headers, user sessions, database connections)
-// across all our tRPC routes. Here, we expose Fastify's raw request and reply objects.
-export type Context = {
-  req: FastifyRequest;
-  res: FastifyReply;
-};
+import { Context } from './context';
 
 // Initialize tRPC. This is the core engine of our API.
 // We configure it to use our Context type, and we also give it 'OpenApiMeta'.
