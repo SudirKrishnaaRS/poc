@@ -4,6 +4,8 @@ export default async function Home() {
   const session = await auth0.getSession();
   const user = session?.user;
 
+  console.log("first session:", session);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-100 px-4">
       <main className="w-full max-w-xl rounded-2xl border border-slate-200 bg-white p-8 shadow-lg">
@@ -45,11 +47,9 @@ export default async function Home() {
               >
                 Log Out
               </a>
-              <a
-                href="http://payment.lvh.me:3000/wallet"
-                className="inline-flex rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
-              >
-                Go to Wallet (Existing Frontend)
+
+              <a href="http://sa.lvh.me:3001/wallet-dashboard" className="inline-flex rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">
+                Take me to Wallet Dashboard
               </a>
             </div>
           </div>
